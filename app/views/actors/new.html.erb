@@ -1,0 +1,67 @@
+<h2>Crea un Actor:</h2>
+
+<%= form_for @actor do |f| %>
+ 
+  <% if @actor.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@actor.errors.count, "error") %> prohibited
+        this actor from being saved:
+      </h2>
+      <ul>
+        <% @actor.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :image_url %><br>
+    <%= f.text_field :image_url %>
+  </p> 
+
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :bio %><br>
+    <%= f.text_area :bio %>
+  </p>
+
+  <p>
+    <%= f.label :birth_date %><br>
+    <%= f.date_field :birth_date %>
+  </p>
+
+  <p>
+    <%= f.label :birth_place %><br>
+    <%= f.text_field :birth_place %>
+  </p>
+
+  <p>
+    <%= f.label :alive %><br>
+    <%= f.radio_button :alive, 'yes', :checked => true, :class => "alive" %> Yes
+    <%= f.radio_button :alive, 'not', :class => "alive" %> Not
+  </p>
+
+  <div class="alive-options">
+    <p>
+      <%= f.label :death_date %><br>
+      <%= f.date_field :death_date %>
+    </p>
+
+    <p>
+      <%= f.label :death_place %><br>
+      <%= f.text_field :death_place %>
+    </p>    
+  </div>
+
+  <p>
+    <%= f.submit class: "button" %>
+
+  </p>
+ 
+<% end %>
